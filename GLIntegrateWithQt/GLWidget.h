@@ -31,13 +31,22 @@ protected:
 
 private:
 	void initializeShaderProgram();
+	void initializeGeometry();
 	bool checkStatus(GLuint objectID, PFNGLGETSHADERIVPROC objectPropertyAccesserFunc, PFNGLGETSHADERINFOLOGPROC getInfoLogFunc, GLenum statusType);
+
 private:
 	QOpenGLShaderProgram m_program;
 	//QOpenGLContext *m_context;
 	//QOpenGLFormat * m_format;
 	//QSurface *m_surface;
-
+	QOpenGLBuffer VBO;
+	QOpenGLBuffer IBO;
+	struct VertexData
+	{
+		QVector3D position;
+		QVector3D color;
+		QVector2D texture;
+	};
 private:
 	Ui::GLWidget ui;
 };
